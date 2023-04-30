@@ -4,7 +4,11 @@ from django.conf import settings as django_settings
 from django.template import Context, Template, TemplateSyntaxError
 from django.test import TestCase, override_settings
 
-from typeguard import get_type_name
+# TypeGuard import moved in v3
+try:
+    from typeguard import get_type_name
+except ImportError:
+    from typeguard._utils import get_type_name
 
 
 class ComponentTest(TestCase):
